@@ -75,7 +75,7 @@ At the beginning of the Hoppy Bunny tutorials you learned how to create your fir
 
 #Solution
 
-[Download Hoppy Bunny](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift-Solution).
+Download the [Hoppy Bunny solution](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift-Solution/archive/swift3.zip).
 
 ![GitHub Cat](https://static.makegameswith.us/gamernews_images/TVZ2mTmQpl/labtocat.png)
 

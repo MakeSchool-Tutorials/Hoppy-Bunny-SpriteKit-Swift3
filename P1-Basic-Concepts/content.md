@@ -39,7 +39,7 @@ Time to get started and make a new SpriteKit project in Xcode and get started wi
 
 > [action]
 >
-1. After the project is created, you should [Download the Art Pack](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift/raw/master/assets.zip).
+1. After the project is created, you should [Download the Art Pack](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift3/raw/master/assets.zip).
 1. First unzip the downloaded *assets.zip* file
 1. Select the `Assets.xcassets` folder in the Xcode project navigator
 1. Delete the `Spaceship` asset by clicking on it and pressing `delete` on your keyboard
@@ -50,8 +50,8 @@ Time to get started and make a new SpriteKit project in Xcode and get started wi
 ##Adding Sound Effects
 
 > [action]
-> Download the [SFX Pack](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift/raw/master/SFX.zip) we created for you. Once the download is complete, unzip the folder and add it to the project by dragging the entire unzipped folder into Xcode. **Make sure to check the *Copy items if needed* checkbox!** 
-> 
+> Download the [SFX Pack](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift3/raw/master/SFX.zip) we created for you. Once the download is complete, unzip the folder and add it to the project by dragging the entire unzipped folder into Xcode. **Make sure to check the *Copy items if needed* checkbox!**
+>
 > ![ms-video](https://s3.amazonaws.com/mgwu-misc/Hoppy+Bunny+Swift+Spritekit/dragSFX.mov)
 
 ##Asset Scale

@@ -125,7 +125,7 @@ A good game over indication might consist of:
 Unfortunately, there is currently no easy way to add a button in SpriteKit so you will need to get creative and create your own solution. Only joking, we've kindly provided a starting point for you with a custom class called `MSButtonNode`.
 
 > [action]
-> [Download MSButtonNode](https://raw.githubusercontent.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift-Solution/master/HoppyBunny/MSButtonNode.swift) and drag this file into your project, making sure to select the *Copy items if needed* checkbox.
+> [Download MSButtonNode](https://raw.githubusercontent.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift-Solution/swift3/HoppyBunny/MSButtonNode.swift) and drag this file into your project, making sure to select the *Copy items if needed* checkbox.
 
 <!-- -->
 
@@ -168,7 +168,7 @@ The code connection is ready. If you run the game you can touch the button: it l
 >
 ```
 /* Setup restart button selection handler */
-buttonRestart.selectedHandler = {
+buttonRestart.selectedHandler = { [unowned self] in
 >
   /* Grab reference to our SpriteKit view */
   let skView = self.view as SKView!

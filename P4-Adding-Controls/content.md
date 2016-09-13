@@ -153,7 +153,7 @@ To fix this, we'll need to limit the rotation of the bunny and also perform a do
 <!--  -->
 
 > [action]
-> Right-click and [Download CGFloat+Extensions.swift](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift/raw/master/CGFloat%2BExtensions.swift) using "save link as" or the equivalent in your browser. Drag this file into your project.
+> Right-click and [Download CGFloat+Extensions.swift](https://raw.githubusercontent.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift-Solution/swift3/HoppyBunny/CGFloat%2BExtensions.swift) using "save link as" or the equivalent in your browser. Drag this file into your project.
 > Ensure *Copy items if needed* is checked.
 >
 > ![Add file](../Tutorial-Images/xcode_add_file.png)

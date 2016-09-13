@@ -7,7 +7,7 @@ Welcome to the bonus stage! Your challenge, should you choose to accept, is to w
 
 There are no solutions provided and I would encourage you to discuss potential solutions with your fellow students: it's good to collaborate and often results in new and exciting directions.
 
-If you have any challenge suggestions, we would love to hear them. Please provide feedback at this tutorial's [GitHub Repository](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift)
+If you have any challenge suggestions, we would love to hear them. Please provide feedback at this tutorial's [GitHub Repository](https://github.com/MakeSchool-Tutorials/Hoppy-Bunny-SpriteKit-Swift3).
 
 It would be a good idea to create a **new branch** in your repository for these challenges. If you need help doing this, ask an instructor!
 
