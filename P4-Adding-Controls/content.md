@@ -25,14 +25,14 @@ class GameScene: SKScene {
 We now have a property to use for connecting to our bunny object. However, this alone will not do anything. First we need to add some code to find the bunny inside the scene graph and assign it to our newly added *hero* property.
 
 > [action]
-> Add the following code to the `didMoveToView(...)` method:
+> Add the following code to the `didMove(to:)` method:
 >
 ```
-override func didMoveToView(view: SKView) {
+override func didMove(to view: SKView) {
   /* Set up your scene here */
 >
   /* Recursive node search for 'hero' (child of referenced node) */
-  hero = self.childNodeWithName("//hero") as! SKSpriteNode
+  hero = self.childNode(withName: "//hero") as! SKSpriteNode
 ```
 >
 
@@ -51,11 +51,11 @@ The goal is to have the bunny hop every time we touch the screen, which will kee
 > Replace the declaration:
 >
 ```
-override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
   /* Called when a touch begins */
 >
   /* Apply vertical impulse */
-  hero.physicsBody?.applyImpulse(CGVectorMake(0, 250))
+  hero.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 250))
 ```
 > We are applying an impulse to the *hero's* `physicsBody`. Think of an impulse as like being hit by a baseball bat.
 > In this case a short vertical burst to make the bunny move vertically.
@@ -76,7 +76,7 @@ It works, but it doesn't quite feel right. You may have noticed while testing th
 > Modify the `update(...)` method as shown:
 >
 ```
-override func update(currentTime: CFTimeInterval) {
+override func update(_ currentTime: TimeInterval) {
   /* Called before each frame is rendered */
 >
   /* Grab current velocity */
@@ -110,7 +110,7 @@ Adding sound effects is quite straight-forward in SpriteKit. You can make use of
 ```
 /* Play SFX */
 let flapSFX = SKAction.playSoundFileNamed("sfx_flap", waitForCompletion: false)
-self.runAction(flapSFX)
+self.run(flapSFX)
 ```
 >
 
@@ -130,7 +130,7 @@ There are a couple of things you will need to do to achieve this:
 > The first step is to add a property to keep track of the time since the last touch. Add this declaration just after our hero property declaration.
 >
 ```
-var sinceTouch : CFTimeInterval = 0
+var sinceTouch : TimeInterval = 0
 ```
 >
 > Next add this code to the `touchBegan(...)` method, after the application of the vertical impulse `applyImpulse(...)`
@@ -161,7 +161,7 @@ To fix this, we'll need to limit the rotation of the bunny and also perform a do
 > Feel free to explore this new code to see how it works.
 >
 
-Next we can apply the `clamp(...)` function to limit the rotation of the bunny, limit the angular velocity and increment the new `sinceTouch` timer.
+Next we can apply the `clamped(...)` function to limit the rotation of the bunny, limit the angular velocity and increment the new `sinceTouch` timer.
 
 > [action]
 > Add this code at end of the `update(...)` method:
@@ -174,8 +174,8 @@ if sinceTouch > 0.1 {
 }
 >
 /* Clamp rotation */
-hero.zRotation.clamp(CGFloat(-20).degreesToRadians(),CGFloat(30).degreesToRadians())
-hero.physicsBody?.angularVelocity.clamp(-2, 2)
+hero.zRotation = hero.zRotation.clamped(CGFloat(-20).degreesToRadians(), CGFloat(30).degreesToRadians())
+hero.physicsBody!.angularVelocity = hero.physicsBody!.angularVelocity.clamped(-2, 2)
 >
 /* Update last touch timer */
 sinceTouch+=fixedDelta
@@ -188,7 +188,7 @@ First thing you will notice are the red errors: we need to define the value for 
 > Add the following code after the declaration of the `sinceTouch` property.
 >
 ```
-let fixedDelta: CFTimeInterval = 1.0/60.0 /* 60 FPS */
+let fixedDelta: TimeInterval = 1.0/60.0 /* 60 FPS */
 ```
 >
 
@@ -210,7 +210,7 @@ Now try running your game! The behavior should hopefully be similar to this:
 
 We've made some real progress in this chapter and learned:
 
-- How to use `childNodeWithName()` to get references to **GameScene** objects in the Swift game code
+- How to use `childNode(withName:)` to get references to **GameScene** objects in the Swift game code
 - How to add touch controls using the `touchesBegan()` method, and how to apply physics forces
 - How to clamp values to a range
 - About *delta* and making time counters using the `update()` method

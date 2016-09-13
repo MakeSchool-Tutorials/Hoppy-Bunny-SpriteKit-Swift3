@@ -46,7 +46,7 @@ Next we need to create the code connection to the Scene Editor object. This step
 >
 ```
 /* Set reference to scroll layer node */
-scrollLayer = self.childNodeWithName("scrollLayer")
+scrollLayer = self.childNode(withName: "scrollLayer")
 ```
 >
 
@@ -125,16 +125,16 @@ In the update method, we will perform a check against every ground object in the
 for ground in scrollLayer.children as! [SKSpriteNode] {
 >
   /* Get ground node position, convert node position to scene space */
-  let groundPosition = scrollLayer.convertPoint(ground.position, toNode: self)
+  let groundPosition = scrollLayer.convert(ground.position, to: self)
 >
   /* Check if ground sprite has left the scene */
   if groundPosition.x <= -ground.size.width / 2 {
 >
       /* Reposition ground sprite to the second starting position */
-      let newPosition = CGPointMake( (self.size.width / 2) + ground.size.width, groundPosition.y)
+      let newPosition = CGPoint( x: (self.size.width / 2) + ground.size.width, y: groundPosition.y)
 >
       /* Convert new node position back to scroll layer space */
-      ground.position = self.convertPoint(newPosition, toNode: scrollLayer)
+      ground.position = self.convert(newPosition, to: scrollLayer)
   }
 }
 ```
@@ -142,7 +142,7 @@ for ground in scrollLayer.children as! [SKSpriteNode] {
 
 ##Relative node position
 
-This code retrieves the current screen position for each ground sprite. Since the ground sprites aren't children of the *GameScene*, we need to convert their relative position inside the *scrollLayer* to *GameScene* coordinate space using the `convertPoint(...)` method.
+This code retrieves the current screen position for each ground sprite. Since the ground sprites aren't children of the *GameScene*, we need to convert their relative position inside the *scrollLayer* to *GameScene* coordinate space using the `convert(_:to:)` method.
 
 Once we have this world space position, we check if the ground sprite is outside of the the screen. If so then move it to the right edge of the screen. We calculate the new position for the node in *GameScene* (world space) and then convert this back to get the relative position in *scrollLayer* space.
 

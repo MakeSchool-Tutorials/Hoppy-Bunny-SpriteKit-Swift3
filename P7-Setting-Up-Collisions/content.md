@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 The *GameScene* class is now ready to implement the contact delegate protocol methods. First, we should inform the physics world which class will take responsibility for handling the contact messages. To do this, we assign *GameScene* as the collision delegate.
 
 > [action]
-> Add the following code to the `didMoveToView(..)` method:
+> Add the following code to the `didMove(to:)` method:
 >
 ```
 /* Set physics contact delegate */
@@ -101,7 +101,7 @@ Finally, we can implement the *didBeginContact* method from the `SKPhysicsContac
 > Add this new method to the *GameScene* class:
 >
 ```
-func didBeginContact(contact: SKPhysicsContact) {
+func didBeginContact(_ contact: SKPhysicsContact) {
   /* Hero touches anything, game over */
   print("TODO: Add contact code")
 }
@@ -151,11 +151,11 @@ var buttonRestart: MSButtonNode!
 ```
 >
 > When we connect this node, we need to ensure the node is downcast to the `MSButtonNode` class.
-> Add the following to the `didMoveToView(..)` method.
+> Add the following to the `didMove(to:)` method.
 >
 ```
 /* Set UI connections */
-buttonRestart = self.childNodeWithName("buttonRestart") as! MSButtonNode
+buttonRestart = self.childNode(withName: "buttonRestart") as! MSButtonNode
 ```
 >
 
@@ -177,7 +177,7 @@ buttonRestart.selectedHandler = {
   let scene = GameScene(fileNamed:"GameScene") as GameScene!
 >
   /* Ensure correct aspect mode */
-  scene.scaleMode = .AspectFill
+  scene.scaleMode = .aspectFill
 >
   /* Restart game scene */
   skView.presentScene(scene)
@@ -197,7 +197,7 @@ Great! We have a button, but as it's bang in the middle of the screen it might b
 >
 ```
 /* Hide restart button */
-buttonRestart.state = .Hidden
+buttonRestart.state = .hidden
 ```
 >
 
@@ -231,7 +231,7 @@ enum GameSceneState {
 >
 ```
 /* Game management */
-var gameState: GameSceneState = .Active
+var gameState: GameSceneState = .active
 ```
 >
 
@@ -243,14 +243,14 @@ Great, we now have some rudimentary game state management in place. Time to kill
 > Replace the `didBeginContact(...)` method as shown:
 >
 ```
-func didBeginContact(contact: SKPhysicsContact) {
+func didBeginContact(_ contact: SKPhysicsContact) {
   /* Ensure only called while game running */
-  if gameState != .Active { return }
+  if gameState != .active { return }
 >
   /* Hero touches anything, game over */
 >
   /* Change game state to game over */
-  gameState = .GameOver
+  gameState = .gameOver
 >
   /* Stop any new angular velocity being applied */
   hero.physicsBody?.allowsRotation = false
@@ -262,7 +262,7 @@ func didBeginContact(contact: SKPhysicsContact) {
   hero.removeAllActions()
 >
   /* Show restart button */
-  buttonRestart.state = .Active
+  buttonRestart.state = .active
 }
 ```
 
@@ -281,7 +281,7 @@ To disable scrolling and touch, we can once again make use of the *gameState* pr
 >
 ```
 /* Skip game update if game no longer active */
-if gameState != .Active { return }
+if gameState != .active { return }
 ```
 >
 
@@ -297,7 +297,7 @@ Can you figure out how to disable touch? Try it yourself!
 >
 ```
 /* Disable touch if game state is not active */
-if gameState != .Active { return }
+if gameState != .active { return }
 ```
 
 Run the game! Now death should truly be final for our bunny.
@@ -311,7 +311,7 @@ It would look better if the bunny fell face first upon hitting an obstacle. A po
 >
 ```
 /* Create our hero death action */
-let heroDeath = SKAction.runBlock({
+let heroDeath = SKAction.run({
 >
     /* Put our hero face down in the dirt */
     self.hero.zRotation = CGFloat(-90).degreesToRadians()
@@ -396,7 +396,7 @@ When the bunny is falling and the player touches the screen, the touch feels a l
 >
 ```
 /* Reset velocity, helps improve response against cumulative falling velocity */
-hero.physicsBody?.velocity = CGVectorMake(0, 0)
+hero.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
 ```
 >
 

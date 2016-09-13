@@ -40,7 +40,7 @@ var scoreLabel: SKLabelNode!
 > Add the following code after the `buttonRestart` connection:
 >
 ```
-scoreLabel = self.childNodeWithName("scoreLabel") as! SKLabelNode
+scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
 ```
 >
 
@@ -61,7 +61,7 @@ var points = 0
 When the game starts, we want to ensure the label is reset to `0`. Let's make that happen.
 
 > [action]
-> Add the following code to the bottom of the `didMoveToView(...)` method:
+> Add the following code to the bottom of the `didMove(to:)` method:
 >
 ```
 /* Reset Score label */

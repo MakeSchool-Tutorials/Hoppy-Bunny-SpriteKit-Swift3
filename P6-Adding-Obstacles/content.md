@@ -102,7 +102,7 @@ var obstacleLayer: SKNode!
 >
 ```
 /* Set reference to obstacle layer node */
-obstacleLayer = self.childNodeWithName("obstacleLayer")
+obstacleLayer = self.childNode(withName: "obstacleLayer")
 ```
 
 ##Spawn Timer
@@ -112,7 +112,7 @@ We'll add a timer property to help us manage the rate of obstacle generation. If
 > Add the following after the *sinceTouch* property declaration:
 >
 ```
-var spawnTimer: CFTimeInterval = 0
+var spawnTimer: TimeInterval = 0
 ```
 >
 
@@ -133,7 +133,7 @@ func updateObstacles() {
    for obstacle in obstacleLayer.children as! [SKReferenceNode] {
 >
        /* Get obstacle node position, convert node position to scene space */
-       let obstaclePosition = obstacleLayer.convertPoint(obstacle.position, toNode: self)
+       let obstaclePosition = obstacleLayer.convert(obstacle.position, to: self)
 >
        /* Check if obstacle has left the scene */
        if obstaclePosition.x <= 0 {
@@ -179,14 +179,14 @@ if spawnTimer >= 1.5 {
 >
     /* Create a new obstacle reference object using our obstacle resource */
     let resourcePath = NSBundle.mainBundle().pathForResource("Obstacle", ofType: "sks")
-    let newObstacle = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+    let newObstacle = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
     obstacleLayer.addChild(newObstacle)
 >
     /* Generate new obstacle position, start just outside screen and with a random y value */
-    let randomPosition = CGPointMake(352, CGFloat.random(min: 234, max: 382))
+    let randomPosition = CGPoint(x: 352, y: CGFloat.random(min: 234, max: 382))
 >
     /* Convert new node position back to obstacle layer space */
-    newObstacle.position = self.convertPoint(randomPosition, toNode: obstacleLayer)
+    newObstacle.position = self.convert(randomPosition, to: obstacleLayer)
 >
     // Reset spawn timer
     spawnTimer = 0
@@ -201,7 +201,7 @@ Once you are finished set your obstacle just outside of the scene view, this wil
 > [info]
 > You know that feeling when you play a great game and the core mechanic feels just right? This is rarely a coincidence; expect to tweak game values and tinker with mechanics. Get friends to give feedback until the balance feels right.
 
-Although we've added the `spawnTimer` property, we have a problem. It hasn't yet been set up to track time. It will just stay at the initial value of `0` the whole game. 
+Although we've added the `spawnTimer` property, we have a problem. It hasn't yet been set up to track time. It will just stay at the initial value of `0` the whole game.
 
 > [action]
 Try to fix your code, so `spawnTimer`'s value increases as the game runs.
