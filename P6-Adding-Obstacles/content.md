@@ -178,8 +178,8 @@ We will implement a mechanic that spawns a new obstacle based on a timer. Feel f
 if spawnTimer >= 1.5 {
 >
     /* Create a new obstacle reference object using our obstacle resource */
-    let resourcePath = NSBundle.mainBundle().pathForResource("Obstacle", ofType: "sks")
-    let newObstacle = SKReferenceNode(URL: NSURL(fileURLWithPath: resourcePath!))
+    let resourcePath = Bundle.main.path(forResource: "Obstacle", ofType: "sks")
+    let newObstacle = SKReferenceNode(url: URL(fileURLWithPath: resourcePath!))
     obstacleLayer.addChild(newObstacle)
 >
     /* Generate new obstacle position, start just outside screen and with a random y value */
